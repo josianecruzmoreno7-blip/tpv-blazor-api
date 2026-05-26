@@ -1,0 +1,6 @@
+@tpv_blazor_api_HostAddress = http://localhost:5183
+
+GET {{tpv_blazor_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
