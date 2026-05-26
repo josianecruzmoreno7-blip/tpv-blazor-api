@@ -1,27 +1,22 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors();
-
 var app = builder.Build();
-
-app.UseCors(policy =>
-    policy.AllowAnyOrigin()
-          .AllowAnyHeader()
-          .AllowAnyMethod()
-);
 
 var corridas = new[]
 {
-    new {
+    new
+    {
         origen = "Tuxtla",
         destino = "CDMX",
+        fecha = "01-06-2026",
         hora = "08:00 PM",
         precio = 950
     },
-
-    new {
+    new
+    {
         origen = "Tuxtla",
         destino = "Puebla",
+        fecha = "09-06-2026",
         hora = "10:00 PM",
         precio = 700
     }
@@ -30,9 +25,12 @@ var corridas = new[]
 app.MapGet("/api/corridas", (string origen, string destino) =>
 {
     var resultados = corridas.Where(c =>
+
         c.origen.ToLower() == origen.ToLower()
         &&
+
         c.destino.ToLower() == destino.ToLower()
+
     );
 
     return resultados;
