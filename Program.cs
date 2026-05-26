@@ -1,7 +1,19 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// ACTIVAR CORS
+builder.Services.AddCors();
+
 var app = builder.Build();
 
+// USAR CORS
+app.UseCors(policy =>
+    policy
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+);
+
+// DATOS DEMO
 var corridas = new[]
 {
     new
@@ -22,11 +34,13 @@ var corridas = new[]
     }
 };
 
+// ENDPOINT
 app.MapGet("/api/corridas", (string origen, string destino) =>
 {
     var resultados = corridas.Where(c =>
 
         c.origen.ToLower() == origen.ToLower()
+
         &&
 
         c.destino.ToLower() == destino.ToLower()
