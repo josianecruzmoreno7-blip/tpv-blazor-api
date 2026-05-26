@@ -39,6 +39,14 @@ var corridas = new[]
         fecha = "09-06-2026",
         hora = "10:00 PM",
         precio = 700
+    },
+    new
+    {
+        origen = "Tapachula",
+        destino = "Campeche",
+        fecha = "09-06-2026",
+        hora = "10:00 PM",
+        precio = 700
     }
     
 };
